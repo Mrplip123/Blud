@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Slides & Quiz</title>
+</head>
+<body>
+    <script>
+        let currentSlideIndex = 0;
+        const slides = [
+            'Screenshot 2026-01-17 170748.png',
+            'Screenshot 2026-01-17 170815.png',
+            'Screenshot 2026-01-17 170826.png',
+            'Screenshot 2026-01-17 170840.png',
+            'Screenshot 2026-01-17 170850.png',
+            'Screenshot 2026-01-17 170901.png',
+            'Screenshot 2026-01-17 170910.png',
+            'Screenshot 2026-01-17 170931.png',
+            'Screenshot 2026-01-17 170951.png',
+            'Screenshot 2026-01-17 171000.png',
+            'Screenshot 2026-01-17 171011.png',
+            'Screenshot 2026-01-17 171026.png',
+            'Screenshot 2026-01-17 171034.png',
+            'Screenshot 2026-01-17 171041.png',
+            'Screenshot 2026-01-17 171054.png',
+            'Screenshot 2026-01-17 171237.png',
+            'Screenshot 2026-01-17 171250.png',
+            'Screenshot 2026-01-17 171309.png',
+            'Screenshot 2026-01-17 171317.png',
+            'Screenshot 2026-01-17 174732.png',
+            'Screenshot 2026-01-17 174744.png',
+            'Screenshot 2026-01-17 174752.png',
+            'Screenshot 2026-01-17 174800.png',
+            'Screenshot 2026-01-17 174809.png',
+            'Screenshot 2026-01-17 174821.png',
+            'Screenshot 2026-01-17 174828.png',
+            'Screenshot 2026-01-17 174835.png',
+            'Screenshot 2026-01-17 174842.png',
+            'Screenshot 2026-01-17 174850.png',
+            'Screenshot 2026-01-17 174858.png',
+            'Screenshot 2026-01-17 174905.png'
+        ];
+
+        function showSlide(index) {
+            const slideContainer = document.getElementById('slide-viewer');
+            const img = slideContainer.querySelector('img');
+            const slideCounter = slideContainer.querySelector('.slide-counter');
+            
+            img.src = slides[index];
+            slideCounter.textContent = `Slide ${index + 1} of ${slides.length}`;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function Displayslides() {
+            document.body.innerHTML = '';
+            currentSlideIndex = 0;
+            const viewer = document.createElement('div');
+            viewer.id = 'slide-viewer';
+            viewer.className = 'slide-viewer-container';
+            const img = document.createElement('img');
+            img.src = slides[0];
+            img.className = 'slide-image';
+            const controls = document.createElement('div');
+            controls.className = 'slide-controls';
+            const prevBtn = document.createElement('button');
+            prevBtn.textContent = '← Previous';
+            prevBtn.onclick = prevSlide;
+            prevBtn.className = 'nav-button';
+            const counter = document.createElement('span');
+            counter.className = 'slide-counter';
+            counter.textContent = `Slide 1 of ${slides.length}`;
+            const nextBtn = document.createElement('button');
+            nextBtn.textContent = 'Next →';
+            nextBtn.onclick = nextSlide;
+            nextBtn.className = 'nav-button';
+            controls.appendChild(prevBtn);
+            controls.appendChild(counter);
+            controls.appendChild(nextBtn);
+            viewer.appendChild(img);
+            viewer.appendChild(controls);
+            document.body.appendChild(viewer);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #00f7ff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .slide {
+            margin-bottom: 20px;
+        }
+        .slide img {
+            max-width: 50%;
+            height: auto;
+        }
+        .slide-viewer-container {
+            max-width: 50%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .slide-image {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 384px) {
+            .slide-image {
+                max-width: 50%;
+            }
+        }
+        @media (max-width: 240px) {
+            .slide-image {
+                max-width: 50%;
+            }
+        }
+        .slide-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .nav-button:hover {
+            background-color: #0056b3;
+        }
+        .slide-counter {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <div class="container">
+        <h1>Hello There</h1>
+    <div class="container">
+        <p>If you stumbled upon this website, I greatly thank you for</p>
+        <p>visiting. This website contains all of our slides including</p>
+        <p>extra and deleted ones. We put a lot of effort into making</p>
+        <p>these slides informative and engaging for you. So please </p>
+        <p>take your time to explore and learn from them. Enjoy!</p>
+        <p></p>
+    </div>
+        <p>Made by Adi & Jason for Intresting Liquids presentation</p>
+    <button onclick="Displayslides()">View Slide Deck</button>
+</body>
+</html>
