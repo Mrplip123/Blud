@@ -119,9 +119,17 @@
         const viewer = document.getElementById("slide-viewer");
         const img = viewer.querySelector("img");
         const counter = viewer.querySelector(".slide-counter");
+        const quizLink = viewer.querySelector("a");
 
         img.src = slides[index];
         counter.textContent = `Slide ${index + 1} of ${slides.length}`;
+
+        // ✅ Show quiz only on last slide
+        if (index === slides.length - 1) {
+            quizLink.style.display = "block";
+        } else {
+            quizLink.style.display = "none";
+        }
     }
 
     function nextSlide() {
@@ -141,6 +149,8 @@
     function Displayslides() {
         document.body.innerHTML = "";
         document.body.style.background = "#00f7ff";
+
+        currentSlideIndex = 0; // ✅ reset index
 
         const viewer = document.createElement("div");
         viewer.id = "slide-viewer";
@@ -171,16 +181,16 @@
         controls.appendChild(counter);
         controls.appendChild(next);
 
-        viewer.appendChild(img);
-        viewer.appendChild(controls);
         const quizLink = document.createElement("a");
         quizLink.href = "https://mrplip123.github.io/bludquiz/";
         quizLink.textContent = "Blud Quiz (:";
         quizLink.style.marginTop = "15px";
         quizLink.style.fontSize = "18px";
         quizLink.style.display = "none";
-        viewer.appendChild(quizLink);
 
+        viewer.appendChild(img);
+        viewer.appendChild(controls);
+        viewer.appendChild(quizLink);
         document.body.appendChild(viewer);
 
     }
